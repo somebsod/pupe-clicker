@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>пупе</title>
+        <meta charset="UTF-8">
+
+    </head>
+    <body style="background-color: darkcyan; font-family: sans-serif;">
+        <h1 id="score">щет пупе</h1>
+        <div id="click-area">
+            <img id="click-img" src="https://i.ibb.co/BKj8XGSt/pup1.png" alt="pupe">
+        </div>    
+    </body>
+
+    <audio id="click-sound" src="https://cdn.discordapp.com/attachments/1490097020734673206/1530951727149224016/0726-_3_.mp3?ex=6a677167&is=6a661fe7&hm=15dc8f4bc9398b8f2c4fbaa59b132fe3525543f7942a7677748797e66623084f&" preload="auto"></audio>
+    <script>
+        function loadScore() {
+            const savedScore = localStorage.getItem('clicker_score');
+            return savedScore ? parseInt(savedScore) : 0;
+        }
+
+        let score = loadScore();
+
+        const scoreDisplay = document.getElementById('score');
+        const clickArea = document.getElementById('click-area');
+        const clickImg = document.getElementById('click-img');
+        const clickSound = document.getElementById('click-sound');
+
+        const normalImg = "https://i.ibb.co/BKj8XGSt/pup1.png"; 
+        const pressedImg = "https://i.ibb.co/wNQqvQC6/pup2.png"; 
+
+        scoreDisplay.textContent = score;
+
+        clickArea.addEventListener('mousedown', () => {
+            clickImg.src = pressedImg;
+            clickArea.style.transform = "scale(0.95)";
+            
+            score = score + 1;
+            scoreDisplay.textContent = score;
+            localStorage.setItem('clicker_score', score);
+            
+            clickSound.currentTime = 0; 
+            clickSound.play();
+        });
+
+        clickArea.addEventListener('mouseup', () => {
+            clickImg.src = normalImg;
+            clickArea.style.transform = "scale(1)";
+        });
+
+        clickArea.addEventListener('mouseleave', () => {
+            clickImg.src = normalImg;
+            clickArea.style.transform = "scale(1)";
+        });
+    </script>
+</html>
