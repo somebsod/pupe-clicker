@@ -1,56 +1,112 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>пупе</title>
+        <title>pupue</title>
         <meta charset="UTF-8">
-        <link rel="icon" type="image/png" href="pupe.png">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="pupue.png">
+        <style>
+            
+            #shop-container {
+                margin-top: 40px;
+                border-top: 2px solid #000;
+                padding-top: 20px;
+                width: 300px;
+            }
+            .shop-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+                border: 2px solid #000;
+                background-color: rgba(255, 255, 255, 0.1);
+                padding: 10px;
+            }
+            .shop-img-container {
+                width: 50px; 
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 15px;
+                flex-shrink: 0;
+            }
+            .shop-img-container img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain; 
+            }
+            .shop-info {
+                flex-grow: 1;
+            }
+            .shop-info h3 {
+                margin: 0 0 5px 0;
+                font-size: 16px;
+            }
+            .shop-info p {
+                margin: 0;
+                font-size: 14px;
+            }
+            .shop-btn {
+                background-color: #fff;
+                color: #000;
+                border: 2px solid #000;
+                padding: 5px 10px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+           
+            .shop-btn:disabled {
+                background-color: #888;
+                color: #ccc;
+                border-color: #555;
+                cursor: not-allowed;
+            }
+        </style>
     </head>
-    <body style="background-color: darkcyan; font-family: sans-serif;">
-        <h1 id="score">щет пупе</h1>
-        <div id="click-area">
+    <body style="background-color: darkcyan; font-family: sans-serif; margin: 20px;">
+        
+        <h1 id="score">0</h1>
+        
+        
+        <p style="margin: 10px 0;">kagamis: <span id="cps-display">0</span></p>
+
+        <div id="click-area" style="cursor: pointer; display: inline-block;">
             <img id="click-img" src="https://i.ibb.co/BKj8XGSt/pup1.png" alt="pupe">
-        </div>    
+        </div>
+
+        
+        <div id="shop-container">
+            <h2 style="margin: 0 0 15px 0; font-size: 20px;">shop</h2>
+
+            
+            <div class="shop-item">
+                <div class="shop-img-container">
+                    
+                    <img src="https://i.pinimg.com/736x/dd/0d/08/dd0d0842d47283f8fe4901b792a1598b.jpg" alt="Click Upgrade">
+                </div>
+                <div class="shop-info">
+                    <h3>miyuki takara</h3>
+                    <p>price <span id="click-upgrade-price">1</span></p>
+                </div>
+                <button id="buy-click-upgrade" class="shop-btn" disabled>buy</button>
+            </div>
+
+            
+            <div class="shop-item">
+                <div class="shop-img-container">
+                    
+                    <img src="https://static.wikia.nocookie.net/yuripedia/images/c/c3/B1ce938296deb_00.jpg/revision/latest?cb=20181220155351" alt="Autoclicker">
+                </div>
+                <div class="shop-info">
+                    <h3>kagami hiiragi</h3>
+                    <p>price <span id="auto-upgrade-price">5</span></p>
+                </div>
+                <button id="buy-auto-upgrade" class="shop-btn" disabled>buy</button>
+            </div>
+        </div>
+            
     </body>
 
     <audio id="click-sound" src="https://cdn.discordapp.com/attachments/1490097020734673206/1530951727149224016/0726-_3_.mp3?ex=6a677167&is=6a661fe7&hm=15dc8f4bc9398b8f2c4fbaa59b132fe3525543f7942a7677748797e66623084f&" preload="auto"></audio>
-    <script>
-        function loadScore() {
-            const savedScore = localStorage.getItem('clicker_score');
-            return savedScore ? parseInt(savedScore) : 0;
-        }
-
-        let score = loadScore();
-
-        const scoreDisplay = document.getElementById('score');
-        const clickArea = document.getElementById('click-area');
-        const clickImg = document.getElementById('click-img');
-        const clickSound = document.getElementById('click-sound');
-
-        const normalImg = "https://i.ibb.co/BKj8XGSt/pup1.png"; 
-        const pressedImg = "https://i.ibb.co/wNQqvQC6/pup2.png"; 
-
-        scoreDisplay.textContent = score;
-
-        clickArea.addEventListener('mousedown', () => {
-            clickImg.src = pressedImg;
-            clickArea.style.transform = "scale(0.95)";
-            
-            score = score + 1;
-            scoreDisplay.textContent = score;
-            localStorage.setItem('clicker_score', score);
-            
-            clickSound.currentTime = 0; 
-            clickSound.play();
-        });
-
-        clickArea.addEventListener('mouseup', () => {
-            clickImg.src = normalImg;
-            clickArea.style.transform = "scale(1)";
-        });
-
-        clickArea.addEventListener('mouseleave', () => {
-            clickImg.src = normalImg;
-            clickArea.style.transform = "scale(1)";
-        });
-    </script>
+    <script src="script.js"></script>
 </html>
