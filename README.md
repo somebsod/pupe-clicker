@@ -1,6 +1,6 @@
 this is my first html project!!!
 u can give any tips and remake this.. thing.. 
-PLEASE ALSO CHECK OUT [AD THAT I MADE]([https://example.com](https://youtu.be/ND5VphcXXLE?si=ts9WsJrnp3v0tGEv))
+PLEASE ALSO CHECK OUT AD THAT I MADE <https://www.youtube.com/watch?v=ND5VphcXXLE>
 
 <img src="https://media1.tenor.com/m/LL2BDzHGoz8AAAAC/ye.gif" alt="konata" width="500">
 
